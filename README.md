@@ -5,5 +5,5 @@ or large funding round (more than $150M funding)
 are labelled as successful (1), whereas companies that raised more than $4M but less than $10M which
 were founded between 2010 and 2016 are labelled as unsuccessful (0).
 The descriptions have stopwords removed and padded into sequences. 
-A neural network with three layers is then used with a training/validation split of 0.7.
-The model returns an accuracy of 89%, a precision of 89% and a recall of 79%. 
+A neural network with four layers is then used with a training/validation split of 0.7.
+The model returns an accuracy of 89%, a precision of 90% and a recall of 80%. 
