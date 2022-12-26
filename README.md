@@ -6,4 +6,6 @@ are labelled as successful (1), whereas companies that raised more than $4M but 
 were founded between 2010 and 2016 are labelled as unsuccessful (0).
 The descriptions have stopwords removed and padded into sequences. 
 A neural network with four layers is then used with a training/validation split of 0.7.
-The model returns an accuracy of 89%, a precision of 90% and a recall of 80%. 
+The NLP model returns an accuracy of 89%, a precision of 89% and a recall of
+80%, which is performing about 50% better in performance than the baseline model of random
+classification with 49% accuracy, 37% precision and 51% recall.
