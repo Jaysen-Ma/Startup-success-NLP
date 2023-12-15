@@ -15,14 +15,23 @@ In general, machine learning can support VCs in various ways, including but not 
 In this project, we focus on leveraging machine learning classification algorithms to predict the future of a startup into 1 (successful) and 0 (unsuccessful). There are a variety of approaches on this prediction method [(15)](https://www.imperial.ac.uk/media/imperial-college/faculty-of-natural-sciences/department-of-mathematics/math-finance/HENGSTBERGER_THOMAS_01822754.pdf),[(16)](https://doi.org/10.1109/ACCESS.2019.2938659),[(17)](https://doi.org/https://doi.org/10.1016/j.jfds.2021.04.001),[(18)](https://doi.org/https://doi.org/10.1016/j.jfds.2021.04.001),[(19)](https://doi.org/10.48550/ARXIV.2210.14195),[(20)](https://github.com/velapartners/moneyball-temporal-v1). For example, by quantizing founders’ background for classification purposes, one could achieve a precision of about 0.8 [(21)](https://github.com/velapartners/moneyball-v2/blob/main/Vela_Partners_Project.pdf). It has also been found that a few characteristics of founders such as team size, academic abilities and previous positions at different companies do have some predictive power for future outcomes [(22)](https://doi.org/https://doi.org/10.1016/j.jfineco.2009.11.001). Employing natural language processing methods via BERT transfer learning or Word2Vec could also be seen to study startups [(23)](https://github.com/velapartners/maverick),[(24)](https://github.com/velapartners/twins-v2),[(25)](https://github.com/velapartners/moneyball-v3).
 
 
-## Contents
+## Method
 
 ### Data Processing: Steps involved in preparing the data for analysis.
-### Removing Stopwords: Techniques applied to clean the text data.
-### Global Variables: Definition of global variables used in the notebook.
-### Training-Validation Split: Methodology for splitting the dataset into training and validation sets.
-### Tokenization, Sequences, and Padding: Processes involved in converting text data into a format suitable for machine learning models.
 
+In this approach, BERT will not be used. the author argues BERT is over-killing this problem since it has been trained on BooksCorpus and English Wikipedia, which do not capture much relations between words in the business industry, but more in the academic and linguistic sense. 
+
+The only feature used for the classification algorithm is the description of the companies. It is passed to a function that remove stopwords like am, at, about from the description that do not carry much meaning in the texts. The first word of the name of the companies is also considered as a stopword. While most companies have the second or third word of the their names capturing the essence of their nature, a few of them has the first word capturing the essence. One could argue the performance of this approach could be improved by cherry-picking the stopwords.
+
+The successful and unsuccessful data is then shuffled together and 70% of them are split into training, the remaining 30% are used as validation. The vocabulary in the training sentences are tokenized using the tensorflow keras package. OOV token is used to replace out-of-vocabulary words.
+
+The dimension of the dense embedding layer of the model is chosen to be 8. All description of the startups are padded into 85 words with post padding strategy.
+
+### Deep Learning Model
+
+The neural consists of an embedding layer, followed by ’GlobalAveragePooling1D’ layer, a dense layer with 163 neurons using softmax activation, a dense layer with 57 neurons using sigmoid activation, an ordinary dense layer with 17 neurons, and at last a dense layer with 2 neurons using softmax activation. The model is compiled with the ”sparse categorical crossentropy” loss function, and an ’Adam’ optimizer.
+
+## Result
 In this notebook, we build a classification model using a deep learning approach by learning on the companies' self-description. The model is inherently simple, it takes about 1 minute to train the model. Yet, it is able to give promising predictions. Through cross-validating into 5 folds, the models consistently return an average F1 score of 85%, recall of 81%, precision of 88% and accuracy of 89%. When compared with a baseline random classifier which would return 42% F1 score, 37% precision, 48% recall and 48% accuracy, this deep learnred models perform significantly better than the baseline model.
 
 ## Dependencies
