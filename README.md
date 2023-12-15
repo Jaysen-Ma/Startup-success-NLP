@@ -20,20 +20,26 @@ Machine learning can support VCs in various ways, such as optimising portfolio m
 
 The primary feature used for the classification algorithm is the companies' descriptions. These are processed to remove stopwords like 'am', 'at', 'about', which carry minimal meaning. The first word of company names is also considered as a stopword, as it often does not capture the essence of the company's nature.
 
-The successful and unsuccessful data is then shuffled together, with 70% of them split into training and the remaining 30% used for validation. The training sentences' vocabulary is tokenized using the TensorFlow Keras package, with an 'OOV' token to replace out-of-vocabulary words. 
-
-The dimension of the dense embedding layer of the model is chosen to be 8. All description of the startups are padded into 85 words with post padding strategy.
+The successful and unsuccessful data is then shuffled together, with 70% of them split into training and the remaining 30% used for validation. The training sentences' vocabulary is tokenized using the TensorFlow Keras package, with an 'OOV' token to replace out-of-vocabulary words. All description of the startups are padded into 120 words with post padding strategy.
 
 ### Deep Learning Model
 
-The neural consists of an embedding layer, followed by ’GlobalAveragePooling1D’ layer, a dense layer with 163 neurons using softmax activation, a dense layer with 57 neurons using sigmoid activation, an ordinary dense layer with 17 neurons, and at last a dense layer with 2 neurons using softmax activation. The model is compiled with the ”sparse categorical crossentropy” loss function, and an ’Adam’ optimizer.
+The neural consists of an embedding layer of dimension 8, followed by ’GlobalAveragePooling1D’ layer, a dense layer with 163 neurons using softmax activation, a dense layer with 57 neurons using sigmoid activation, an ordinary dense layer with 17 neurons, and at last a dense layer with 2 neurons using softmax activation. The model is compiled with the ”sparse categorical crossentropy” loss function, and an ’Adam’ optimizer.
 
 ## Result
-In this notebook, we build a classification model using a deep learning approach by learning on the companies' self-description. The model is inherently simple, it takes about 1 minute to train the model. Yet, it is able to give promising predictions. Through cross-validating into 5 folds, the models consistently return an average F1 score of 85%, recall of 81%, precision of 88% and accuracy of 89%. When compared with a baseline random classifier which would return 42% F1 score, 37% precision, 48% recall and 48% accuracy, this deep learnred models perform significantly better than the baseline model.
+
+**The developed deep learning model demonstrates remarkable efficacy in predicting startup success based on website descriptions.** Key metrics highlight its robust performance:
+
+### F1 Score: 85%
+### Recall: 81%
+### Precision: 88%
+### Accuracy: 89%
+
+These results stand in stark contrast to a baseline random classifier, which only achieves an F1 score of 42%, recall of 48%, precision of 37%, and accuracy of 48%. **This significant improvement underscores the model's ability to effectively discern successful startups from unsuccessful ones, marking a substantial advancement over traditional, random classification methods.**
 
 ## Discussion
 
-There are various approaches for these prediction method [(15)](https://www.imperial.ac.uk/media/imperial-college/faculty-of-natural-sciences/department-of-mathematics/math-finance/HENGSTBERGER_THOMAS_01822754.pdf),[(16)](https://doi.org/10.1109/ACCESS.2019.2938659),[(17)](https://doi.org/https://doi.org/10.1016/j.jfds.2021.04.001),[(18)](https://doi.org/https://doi.org/10.1016/j.jfds.2021.04.001),[(19)](https://doi.org/10.48550/ARXIV.2210.14195),[(20)](https://github.com/velapartners/moneyball-temporal-v1). including quantizing founders’ background[(21)](https://github.com/velapartners/moneyball-v2/blob/main/Vela_Partners_Project.pdf) and employing natural language processing methods via BERT transfer learning or Word2Vec [(23)](https://github.com/velapartners/maverick),[(24)](https://github.com/velapartners/twins-v2),[(25)](https://github.com/velapartners/moneyball-v3).
+There are various approaches for these prediction methods [(15)](https://www.imperial.ac.uk/media/imperial-college/faculty-of-natural-sciences/department-of-mathematics/math-finance/HENGSTBERGER_THOMAS_01822754.pdf),[(16)](https://doi.org/10.1109/ACCESS.2019.2938659),[(17)](https://doi.org/https://doi.org/10.1016/j.jfds.2021.04.001),[(18)](https://doi.org/https://doi.org/10.1016/j.jfds.2021.04.001),[(19)](https://doi.org/10.48550/ARXIV.2210.14195),[(20)](https://github.com/velapartners/moneyball-temporal-v1). including quantizing founders’ background[(21)](https://github.com/velapartners/moneyball-v2/blob/main/Vela_Partners_Project.pdf) and employing natural language processing methods via BERT transfer learning or Word2Vec [(23)](https://github.com/velapartners/maverick),[(24)](https://github.com/velapartners/twins-v2),[(25)](https://github.com/velapartners/moneyball-v3).
 
 ## Dependencies
 Libraries: pandas, numpy, matplotlib, seaborn, tensorflow, sklearn, scikeras
