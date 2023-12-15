@@ -30,10 +30,10 @@ The neural consists of an embedding layer of dimension 8, followed by ’GlobalA
 
 **The developed deep learning model demonstrates remarkable efficacy in predicting startup success based on website descriptions.** Key metrics highlight its robust performance:
 
-### F1 Score: 85%
-### Recall: 81%
-### Precision: 88%
-### Accuracy: 89%
+- ### F1 Score: 85%
+- ### Recall: 81%
+- ### Precision: 88%
+- ### Accuracy: 89%
 
 These results stand in stark contrast to a baseline random classifier, which only achieves an F1 score of 42%, recall of 48%, precision of 37%, and accuracy of 48%. **This significant improvement underscores the model's ability to effectively discern successful startups from unsuccessful ones, marking a substantial advancement over traditional, random classification methods.**
 
